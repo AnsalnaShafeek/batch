@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+  <div class="container">
+      <div class="row col-lmd-4" style="text-align:center;">
+       <form method="POST">
+        {% csrf_token %}
+        <h4>Registration Form</h4><br>
+        {{ form.as_p }}
+          <button type="submit" class="btn btn-x-sm btn-primary">Register</button>
+       </form>
+      </div>
+  </div>
+{% endblock %}
