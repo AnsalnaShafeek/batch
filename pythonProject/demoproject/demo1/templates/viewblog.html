@@ -1,0 +1,30 @@
+{% extends 'base.html %}
+{% block body %}
+<br><br>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for i in data %}
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{i.image}}" class="card-img-top" width="150px" height="200px" alt="hollywood sign on the hill"/>
+      <div class="card-body" style="height:300px;text-align:justify;">
+        <div>
+          <span class="float-start badge rounded-pill bg-info">Topic:{{i.Topic}}</span>
+          <span class="float-end price-hp">last modified:{i{i.updated_date/date:"d M Y"}}</span>
+        </div><br><br>
+        <h5 class="card-title">{{i.caption}}</h5>
+        <p class="card-text">
+          {{i.blog_data/truncatewords:40}}<a href="details/{{i.id}}" style="color:blue;">viewmore</a>
+        </p>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group">
+          <button type="submit" style="background-color:blue;color:white;padding:2px;width:150px;float:left;"><a href="update/{{i.id}}" style="color:blue;">update</a></button>
+          <button type="submit" style="background-color:blue;color:white;padding:2px;width:150px;float:right;"><a href="delete/{{i.id}}" style="color:blue;">delete</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
