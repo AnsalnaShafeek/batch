@@ -9,4 +9,7 @@ urlpatterns = [
     path('home',views.home),
     path('reset',views.Forgot_Password),
     path('test',views.testing),
+    path('create',views.CreateBlog),
+    path('viewblog',views.ViewBlog),
+    path('createprofile',views.createprofile),
 ]

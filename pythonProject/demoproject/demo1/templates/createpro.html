@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<form method="POST">
+
+     {% csrf_token %}
+
+  <label for="first_name">First Name</label>
+  <input type="text"  class="form-control-sm" id="first_name" name="first_name">
+  <label for="last_name">Last Name</label>
+  <input type="text" class="form-control-sm" id="last_name" name="last_name"><br>
+  <label for="email">Email address</label>
+  <input type="email" class="form-control-xl" id="email" name="email"><br>
+  <label for="phone">Phone number</label>
+  <input type="phone" class="form-control-sm" id="phone" name="phone">
+  <label for="DOB">DOB</label>
+  <input type="date" class="form-control-sm" id="DOB" name="DOB"><br>
+  <label for="address">Address</label>
+  <input type="text" class="form-control-sm" id="address" name="address">
+  <label for="city">City</label>
+  <input type="text" class="form-control-sm"  id="city" name="city"><br>
+  <button type="submit" class="btn btn-primary">save changes</button>
+</form>
+
+{% endblock %}

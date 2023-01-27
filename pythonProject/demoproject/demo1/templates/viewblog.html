@@ -1,4 +1,4 @@
-{% extends 'base.html %}
+{% extends 'base.html' %}
 {% block body %}
 <br><br>
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -13,7 +13,7 @@
         </div><br><br>
         <h5 class="card-title">{{i.caption}}</h5>
         <p class="card-text">
-          {{i.blog_data/truncatewords:40}}<a href="details/{{i.id}}" style="color:blue;">viewmore</a>
+          {{i.blog_data|truncatewords:40}}<a href="details/{{i.id}}" style="color:blue;">viewmore</a>
         </p>
       </div>
       <div class="card-footer">

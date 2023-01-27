@@ -1,74 +1,41 @@
 {% extends 'base.html' %}
+
+
 {% block body %}
 
-<form method="post">
+<form method="POST">
   {% csrf_token %}
+
   {% load static %}
 
-<nav class="navbar navbar-expand navbar-dark nav bg-dark fixed-top">
-  <div class="container-fluid">
+  <nav class="navbar navbar-expand navbar-dark nav bg-dark fixed-top">
+   <div class="container-fluid">
     <li class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link scrollto" href="#"><img src="{% static 'logo.png' %}" style="height:50px; width:80px;"></a>
+          <a class="nav-link scrollto" href="#"><img src="{% static 'logo.png' %}" style="height:50px; width:80px;"class="img-responsive2 rounded-pill"></a>
         </li>
-        <a class="navbar-brand">Coconet</a>
         <li class="nav-item">
-          <a class="nav-link scrollto" href="#">Create Blog</a>
+          <a class="nav-link scrollto" href="create">Create Blog</a>
         </li>
-        <li class="nav-link scrollto" href="viewblog.html">View Blog</a>
+        <li class="nav-item">
+            <a class="nav-link scrollto" href="viewblog">View Blog</a>
         </li>
-        <li class="nav-item dropdown-right">
-           <a class="nav-link dropdown-toggle" href="#" role="button"  data-bs-toggle="dropdown">
-            <img src="{% static 'cat.jpeg' %}" style="height:30px;width:40px;" class="img-responsive2 rounded-pill">
-           </a>
-               <li class="dropdown-item" href="#">view profile</li>
-
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                <img src="{%  static 'cat.jpeg' %}" style="height:30px;width:40px;" class="img-responsive2 rounded-pill">
+            </a>
+             <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">view profile</a></li>
+              <li><a class="dropdown-item" href="#">edit profile</a></li>
+              <li><a class="dropdown-item" href="#">upload profile pic</a></li>
+              <li><a class="dropdown-item" href="#">change password</a></li>
+              <li><a class="dropdown-item" href="#">logout</a></li>
+             </ul>
         </li>
-
       </ul>
   </div>
 </nav>
 </form>
- <div class="container mt-5">
-     <div class="row">
-        <div class="col-lg-4" style="padding-top:20px;margin:0;">
-          <div class="card" style="padding-top:20px;width:100%;">
-              <img  class="card-img-top" src="{% static 'indian.jpeg' %}" style="width:100%;">
-              <div class="card-body">
-              <h4 class="card-title">Indian Foods</h4>
-              <p class="card-text">Foods of India are better known for its spiciness. Throughout India, be it North India or South India,
-              spices are used generously in food. But one must not forget that every single spice used in Indian dishes carries some or the other nutritional as well as medicinal properties.
-              .</p>
-              </div>
-          </div>
-        </div>
-         <div class="col-lg-4" style="padding-top:20px;margin:0;">
-           <div class="card" style="padding-top:2px;width:100%;">
-             <img class="card-img-top" src="{% static 'foreign.jpeg' %}" style="width:100%;">
-            <div class="card-body">
-              <h4 class="card-title">Foreigners Traditional foods</h4>
-              <p class="card-text">This very traditional foods in foreign country like Australia etc...
-              Another way to say this is foreign food vs local food, but please note the difference between “foreign” and “imported.” Basically, these words can mean the same thing but “foreign food” could be a foreign style of dish that is made with local ingredients.
-              For example, pizza is an Italian food but I could make it with all local ingredients.</p>
-            </div>
-           </div>
-         </div>
-        <div class="col-lg-4" style="padding-top:20px;margin:0;">
-          <div class="card" style="padding-top:20px;width:100%;">
-            <img class="card-img-top" src="{% static '40foods.jpg' %}" style="width:100%;">
-            <div class="card-body">
-            <h4 class="card-title">Best Healthy Foods</h4>
-            <p class="card-text">One of the healthiest foods on the planet, spinach is packed with energy while low in calories, and provides Vitamin A, Vitamin K, and essential folate. EASY EATING TIP: Sauté with onion and add to an omelet for an easy, healthy meal.
-            Spinach is full of nutriants and always ready to eat (Julia Mikhaylova / Shutterstock.com) 2. BLACK BEANS“Nothing brings people together like good food.” “Cooking is one of the great gifts you can give to those you love.” </p>
-            </div>
-          </div>
-        </div>
-    </div>
- </div>
-
-
-
-
 
 {% endblock %}

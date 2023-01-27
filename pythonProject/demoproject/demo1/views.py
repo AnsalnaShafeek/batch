@@ -2,8 +2,8 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from demo1.form import RegisterForm,ProfileForm
-from demo1.models import ProjectData
+from demo1.form import RegisterForm,ProfileForm,UserImageForm
+from demo1.models import ProjectData,Profile,UserBlog
 
 import requests
 # Create your views here.
@@ -55,6 +55,7 @@ def Forgot_Password(request):
           headers = {}
           response = requests.request('GET',url,headers=headers,data=payload)
           res = response.json()
+          print(res)
           if res['Status'] == 'Success':
             return redirect(Userlogin)
         else:
@@ -64,16 +65,55 @@ def Forgot_Password(request):
 
 
 
+"""def CreateBlog(request):
+    if request.method == "POST":
+         Topic = request.POST['Topic']
+         caption = request.POST['caption']
+         blog_data = request.POST['blog_data']
+         data = UserBlog.objects.create(Topic=Topic,caption=caption,images=url('indian.jpeg'),user=request.user.id)
+         data.save()
+         return redirect(home)
+    return render(request,'createblog.html')"""
 
 
-"""def upload_image(request):
-    if request.method == "POST" and request.FILES['images']:
-        upload = request.FILES['images']
-        fss = FileSystemStorage()
-        file = fss.save(upload.name,upload)
-        file_url = fss.url(file)
-        profile.objects.filter(user_id=request.user.id.update(profile_pic=file_url))
-        return redirect('home')
-    
-    return render(request,'propic.html')"""
+def CreateBlog(request):
+    form = UserImageForm()
+    if request.method == 'POST':
+        form = UserImageForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+
+            img_object = form.instance
+            return render(request,'createblog.html',{'form':form,'img_object':img_object})
+
+    return render(request,'createblog.html',{'form':form})
+
+
+def ViewBlog(request):
+    context = {
+        'user': request.user
+    }
+    return render(request,'viewblog.html',context)
+
+
+def createprofile(request):
+    if request.method == "POST":
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        DOB = request.POST['DOB']
+        city = request.POST['city']
+        address = request.POST['address']
+        data =Profile.objects.create(phone=phone,DOB=DOB,city=city,address=address),ProjectData.objects.create(first_name=first_name,last_name=last_name,email=email)
+    return render(request,'createpro.html')
+
+
+
+
+
+
+
+
+
 

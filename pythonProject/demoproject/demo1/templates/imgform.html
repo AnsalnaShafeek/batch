@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+ <form method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+     {{ form.as_p }}
+     <button type="submit">choose your file</button>
+  </form>
+   {% if img_object %}
+       <h3>successfully uploaded:{{img_object.caption}}</h3>
+       <img src="{{img_object.image.url}}" alt="connect" style="height:300px;">
+   {% endif %}
+{% endblock %}
